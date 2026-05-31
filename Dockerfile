@@ -26,6 +26,8 @@ COPY . .
 RUN composer dump-autoload --optimize \
     && php artisan package:discover --ansi \
     && npm run build \
+    && test -f public/build/manifest.json \
+    && chmod -R 775 storage bootstrap/cache \
     && chmod +x start.sh
 
 ENV PORT=8080
