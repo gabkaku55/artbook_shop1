@@ -27,6 +27,7 @@ RUN composer dump-autoload --optimize \
     && php artisan package:discover --ansi \
     && npm run build \
     && test -f public/build/manifest.json \
+    && mkdir -p storage/framework/views storage/framework/cache/data storage/framework/sessions storage/logs bootstrap/cache \
     && chmod -R 775 storage bootstrap/cache \
     && chmod +x start.sh
 

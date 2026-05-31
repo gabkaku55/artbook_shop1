@@ -3,6 +3,9 @@ set -e
 
 cd /app
 
+mkdir -p storage/framework/views storage/framework/cache/data storage/framework/sessions storage/logs bootstrap/cache
+chmod -R 775 storage bootstrap/cache
+
 php artisan config:clear || true
 
 if [ -f artisan ]; then
