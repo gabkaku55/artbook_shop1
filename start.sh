@@ -3,6 +3,8 @@ set -e
 
 cd /app
 
+php artisan config:clear || true
+
 if [ -f artisan ]; then
   php artisan package:discover --ansi || true
   php artisan storage:link --force || true
@@ -14,7 +16,4 @@ if [ -f artisan ]; then
   fi
 fi
 
-php artisan config:cache || true
-php artisan route:cache || true
-
-exec php artisan serve --host=0.0.0.0 --port="${PORT:-8080}"
+exec php artisan serve --host=0.0.0.0 --port="${PORT:-8080}" --no-reload
