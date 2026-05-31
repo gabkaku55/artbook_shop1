@@ -29,6 +29,7 @@ RUN composer dump-autoload --optimize \
     && chmod +x start.sh
 
 ENV PORT=8080
+ENV PHP_CLI_SERVER_WORKERS=4
 EXPOSE 8080
 
 CMD ["/app/start.sh"]
