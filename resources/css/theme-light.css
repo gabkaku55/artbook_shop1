@@ -572,15 +572,6 @@
     background-color: #fffdf6 !important;
 }
 
-/* Wave + clip leave a visible seam above products — hide on light theme */
-[data-theme='light'] .home-hero-video-wrap {
-    clip-path: none;
-}
-
-[data-theme='light'] .home-hero-wave {
-    display: none;
-}
-
 [data-theme='light'] .home-shared-sections.shared-bg {
     margin-top: 0;
     background-color: #fffdf6 !important;
