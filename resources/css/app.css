@@ -28,6 +28,26 @@ html:not([data-theme='light']) .home-hero-video-wrap {
     clip-path: inset(0 0 9% 0 round 0);
 }
 
+/* Home: no hairline / gap between hero video and product blocks */
+.home-shared-sections {
+    margin-top: -1px;
+}
+
+.home-shared-sections > .home-section-products {
+    padding-top: 3rem;
+    padding-bottom: 4rem;
+}
+
+.home-shared-sections > .home-section-unboxing {
+    padding-top: 2rem;
+    padding-bottom: 5rem;
+}
+
+.home-shared-sections > .home-section-faq {
+    padding-top: 2rem;
+    padding-bottom: 6rem;
+}
+
 /* Стилі .auth-bg для login/register задані в layouts/app.blade.php з asset() */
 
 @import './auth.css';

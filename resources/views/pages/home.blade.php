@@ -58,7 +58,7 @@
 </section>
 
 <div class="shared-bg home-shared-sections">
-<section class="py-24 overflow-hidden">
+<section class="home-section-products overflow-hidden">
     <div id="popular" class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-4">
             <div>
@@ -137,7 +137,7 @@
         </div>
     </div>
 
-    <div id="new-arrivals" class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24">
+    <div id="new-arrivals" class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 md:pt-20">
         <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-4">
             <div>
                 <h2 class="text-4xl font-bold text-white tracking-tight">@if(app()->getLocale() == 'uk') Новинки @elseif(app()->getLocale() == 'en') New Arrivals @else Neuheiten @endif</h2>
@@ -216,7 +216,7 @@
     </div>
 </section>
 
-    <section class="py-24">
+    <section class="home-section-unboxing">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="mb-16">
             <h2 class="text-4xl font-bold text-white tracking-tight">@if(app()->getLocale() == 'uk') Відео розпаковок @elseif(app()->getLocale() == 'en') Video Unboxings @else Video-Unboxings @endif</h2>
@@ -308,7 +308,7 @@
     </div>
     </section>
 
-    <section class="py-24 overflow-hidden">
+    <section class="home-section-faq overflow-hidden">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16">
             <h2 class="text-4xl font-bold text-white tracking-tight">@if(app()->getLocale() == 'uk') Питання та відповіді @elseif(app()->getLocale() == 'en') Questions & Answers @else Fragen & Antworten @endif</h2>

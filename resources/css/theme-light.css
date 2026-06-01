@@ -568,15 +568,21 @@
     color: #ffffff !important;
 }
 
-[data-theme='light'] .home-hero-video-wrap {
-    clip-path: inset(0 0 9% 0 round 0);
+[data-theme='light'] .home-hero {
+    background-color: #fffdf6 !important;
 }
 
-[data-theme='light'] .home-hero-wave path {
-    fill: #fffdf6 !important;
+/* Wave + clip leave a visible seam above products — hide on light theme */
+[data-theme='light'] .home-hero-video-wrap {
+    clip-path: none;
+}
+
+[data-theme='light'] .home-hero-wave {
+    display: none;
 }
 
 [data-theme='light'] .home-shared-sections.shared-bg {
+    margin-top: 0;
     background-color: #fffdf6 !important;
     background-image: url('/images/svit.jpg') !important;
     background-repeat: no-repeat !important;
