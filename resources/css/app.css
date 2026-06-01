@@ -98,3 +98,13 @@ html:not([data-theme='light']) .home-hero-video-wrap {
 .home-unboxing-scroll::-webkit-scrollbar-track {
     background: transparent;
 }
+
+.home-faq-card {
+    background: linear-gradient(
+        135deg,
+        rgba(30, 27, 75, 0.55) 0%,
+        rgba(17, 24, 39, 0.92) 55%,
+        rgba(79, 70, 229, 0.12) 100%
+    ) !important;
+    border-color: rgba(99, 102, 241, 0.28) !important;
+}

@@ -32,6 +32,13 @@
 
     --lt-body-scrim: color-mix(in srgb, var(--lt-cream) 92%, transparent);
     --lt-shared-scrim: color-mix(in srgb, var(--lt-cream) 55%, transparent);
+    /* Home sections: svit.jpg + footer-like violet/lilac wash (not product photos) */
+    --lt-home-section-scrim: linear-gradient(
+        165deg,
+        color-mix(in srgb, var(--lt-ui) 52%, transparent) 0%,
+        color-mix(in srgb, var(--lt-lilac) 78%, var(--lt-ui) 14%) 48%,
+        color-mix(in srgb, #6366f1 18%, var(--lt-lilac) 62%) 100%
+    );
     --lt-ghost-fill: color-mix(in srgb, var(--lt-lilac) 45%, transparent);
     --lt-ghost-fill-hover: color-mix(in srgb, var(--lt-lilac) 70%, var(--lt-ui) 8%);
     --lt-ghost-border: color-mix(in srgb, var(--lt-ui) 35%, transparent);
@@ -75,6 +82,12 @@
         --lt-border-soft: #ddd0dc;
         --lt-body-scrim: rgba(255, 253, 246, 0.92);
         --lt-shared-scrim: rgba(255, 253, 246, 0.55);
+        --lt-home-section-scrim: linear-gradient(
+            165deg,
+            rgba(124, 126, 157, 0.52) 0%,
+            rgba(241, 231, 237, 0.78) 48%,
+            rgba(99, 102, 241, 0.22) 100%
+        );
         --lt-ghost-fill: rgba(241, 231, 237, 0.45);
         --lt-ghost-fill-hover: rgba(241, 231, 237, 0.72);
         --lt-ghost-border: rgba(124, 126, 157, 0.35);
@@ -574,7 +587,8 @@
 }
 
 [data-theme='light'] .home-shared-sections.shared-bg::before {
-    background: rgba(255, 253, 246, 0.48) !important;
+    background: var(--lt-home-section-scrim) !important;
+    opacity: 0.88;
 }
 
 [data-theme='light'] .home-shared-sections h2.text-white {
@@ -659,9 +673,15 @@
     color: #7c7e9d !important;
 }
 
+[data-theme='light'] .home-shared-sections .home-faq-card,
 [data-theme='light'] .home-shared-sections .space-y-4 > div.bg-gray-800 {
-    background-color: #ffffff !important;
-    border-color: rgba(124, 126, 157, 0.22) !important;
+    background: linear-gradient(
+        135deg,
+        color-mix(in srgb, #f1e7ed 88%, #fffdf6) 0%,
+        #fffdf6 50%,
+        color-mix(in srgb, #f1e7ed 55%, #ffffff) 100%
+    ) !important;
+    border-color: rgba(124, 126, 157, 0.28) !important;
     box-shadow: 0 8px 24px rgba(76, 83, 114, 0.07);
 }
 

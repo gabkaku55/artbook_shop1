@@ -216,7 +216,7 @@
     </div>
 </section>
 
-<section class="py-24">
+    <section class="py-24">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="mb-16">
             <h2 class="text-4xl font-bold text-white tracking-tight">@if(app()->getLocale() == 'uk') Відео розпаковок @elseif(app()->getLocale() == 'en') Video Unboxings @else Video-Unboxings @endif</h2>
@@ -306,9 +306,9 @@
             @endforelse
         </div>
     </div>
-</section>
+    </section>
 
-<section class="py-24 overflow-hidden">
+    <section class="py-24 overflow-hidden">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16">
             <h2 class="text-4xl font-bold text-white tracking-tight">@if(app()->getLocale() == 'uk') Питання та відповіді @elseif(app()->getLocale() == 'en') Questions & Answers @else Fragen & Antworten @endif</h2>
@@ -344,7 +344,7 @@
             @endforeach
         </div>
     </div>
-</section>
+    </section>
 </div>
 
 <script>
