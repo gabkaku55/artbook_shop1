@@ -22,7 +22,7 @@ class AuthController extends Controller
         ]);
 
         $user = User::where('email', $credentials['email'])->first();
-        if ($user && Hash::check($credentials['password'], $user->password)) {
+        if ($user && Hash::check($credentials['password'], $user->getAuthPassword())) {
             $remember = $request->boolean('remember');
             if ($user->two_factor_enabled) {
                 $code = rand(100000, 999999);

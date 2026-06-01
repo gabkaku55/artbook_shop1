@@ -124,17 +124,16 @@ class CatalogImportSeeder extends Seeder
                 'updated_at' => $now,
             ];
 
-            $exists = DB::table('users')->where('email', $email)->exists();
+            $existing = DB::table('users')->where('email', $email)->first();
 
-            if ($exists) {
-                DB::table('users')->where('email', $email)->update(array_merge($row, ['password' => $password]));
-            } else {
-                DB::table('users')->insert(array_merge($row, [
-                    'email' => $email,
+            DB::table('users')->updateOrInsert(
+                ['email' => $email],
+                array_merge($row, [
                     'password' => $password,
-                    'created_at' => $now,
-                ]));
-            }
+                    'created_at' => $existing->created_at ?? $now,
+                    'updated_at' => $now,
+                ])
+            );
         }
 
         $this->command?->info('Imported '.count($users).' users.');
