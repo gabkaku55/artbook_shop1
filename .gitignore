@@ -20,6 +20,7 @@
 /storage/*.key
 /storage/pail
 /storage/app/temp-export
+/database/media/video/_originals
 /vendor
 Homestead.json
 Homestead.yaml

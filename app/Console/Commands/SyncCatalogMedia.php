@@ -37,9 +37,12 @@ class SyncCatalogMedia extends Command
         File::ensureDirectoryExists($to);
         $count = 0;
 
+        $alwaysRefresh = ['VideoProject1.mp4', 'video2tem.mp4'];
+
         foreach (File::files($from) as $file) {
             $target = $to . DIRECTORY_SEPARATOR . $file->getFilename();
-            if (! file_exists($target)) {
+            $refresh = in_array($file->getFilename(), $alwaysRefresh, true);
+            if ($refresh || ! file_exists($target)) {
                 File::copy($file->getPathname(), $target);
             }
             $count++;
