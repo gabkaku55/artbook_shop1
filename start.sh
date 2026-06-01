@@ -14,7 +14,7 @@ if [ -f artisan ]; then
   php artisan migrate --force || true
   php artisan catalog:sync-media || true
 
-  if [ "${SEED_ON_START:-true}" = "true" ]; then
+  if [ "${SEED_ON_START:-false}" = "true" ]; then
     php artisan db:seed --class=CatalogImportSeeder --force || true
   fi
 fi

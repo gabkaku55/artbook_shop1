@@ -4,10 +4,12 @@ namespace Database\Seeders;
 
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Review;
 use App\Models\UnboxingVideo;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class CatalogImportSeeder extends Seeder
@@ -82,5 +84,87 @@ class CatalogImportSeeder extends Seeder
         }
 
         UnboxingVideo::syncLegacyDefaults();
+
+        $this->importUsers($data['users'] ?? []);
+        $this->importReviews($data['reviews'] ?? []);
+    }
+
+    /**
+     * @param  array<int, array<string, mixed>>  $users
+     */
+    private function importUsers(array $users): void
+    {
+        if ($users === []) {
+            return;
+        }
+
+        $now = now();
+
+        foreach ($users as $user) {
+            $email = $user['email'] ?? null;
+            $password = $user['password'] ?? null;
+            if (! $email || ! $password) {
+                continue;
+            }
+
+            $row = [
+                'name' => $user['name'] ?? 'User',
+                'last_name' => $user['last_name'] ?? null,
+                'phone' => $user['phone'] ?? null,
+                'address' => $user['address'] ?? null,
+                'avatar' => $user['avatar'] ?? null,
+                'role' => $user['role'] ?? 'user',
+                'updated_at' => $now,
+            ];
+
+            $exists = DB::table('users')->where('email', $email)->exists();
+
+            if ($exists) {
+                DB::table('users')->where('email', $email)->update(array_merge($row, ['password' => $password]));
+            } else {
+                DB::table('users')->insert(array_merge($row, [
+                    'email' => $email,
+                    'password' => $password,
+                    'created_at' => $now,
+                ]));
+            }
+        }
+
+        $this->command?->info('Imported '.count($users).' users.');
+    }
+
+    /**
+     * @param  array<int, array<string, mixed>>  $reviews
+     */
+    private function importReviews(array $reviews): void
+    {
+        if ($reviews === []) {
+            return;
+        }
+
+        $imported = 0;
+
+        foreach ($reviews as $review) {
+            $productId = Product::query()->where('slug', $review['product_slug'] ?? '')->value('id');
+            $userId = DB::table('users')->where('email', $review['user_email'] ?? '')->value('id');
+
+            if (! $productId || ! $userId) {
+                continue;
+            }
+
+            Review::updateOrCreate(
+                [
+                    'product_id' => $productId,
+                    'user_id' => $userId,
+                ],
+                [
+                    'rating' => (int) ($review['rating'] ?? 5),
+                    'comment' => $review['comment'] ?? '',
+                ]
+            );
+            $imported++;
+        }
+
+        $this->command?->info("Imported {$imported} reviews.");
     }
 }
