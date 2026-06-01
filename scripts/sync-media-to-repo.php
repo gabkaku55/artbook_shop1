@@ -7,6 +7,7 @@ $mediaRoot = $root . '/database/media';
 
 $maps = [
     $root . '/storage/app/public/products' => $mediaRoot . '/products',
+    $root . '/storage/app/public/avatars' => $mediaRoot . '/avatars',
     $root . '/public/video' => $mediaRoot . '/video',
 ];
 

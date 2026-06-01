@@ -21,9 +21,10 @@ class SyncCatalogMedia extends Command
         }
 
         $products = $this->copyDirectory("{$sourceRoot}/products", storage_path('app/public/products'));
+        $avatars = $this->copyDirectory("{$sourceRoot}/avatars", storage_path('app/public/avatars'));
         $videos = $this->copyDirectory("{$sourceRoot}/video", public_path('video'));
 
-        $this->info("Synced {$products} product images and {$videos} videos.");
+        $this->info("Synced {$products} product images, {$avatars} avatars, and {$videos} videos.");
 
         return self::SUCCESS;
     }
