@@ -2,11 +2,6 @@
 
 declare(strict_types=1);
 
-/**
- * Export catalog and site data (users, reviews, orders, chat, wishlist) to catalog.json.
- * Run from shop/: php scripts/export-site-data.php
- */
-
 $root = dirname(__DIR__);
 
 require $root . '/vendor/autoload.php';
@@ -16,9 +11,7 @@ $app->make(Illuminate\Contracts\Console\Kernel::class)->bootstrap();
 
 use App\Models\Category;
 use App\Models\Product;
-use App\Models\Review;
 use App\Models\UnboxingVideo;
-use App\Models\User;
 use Illuminate\Support\Facades\DB;
 
 $outputPath = $root . '/database/data/catalog.json';

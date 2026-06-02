@@ -96,9 +96,6 @@ class CatalogImportSeeder extends Seeder
         $this->importReviews($data['reviews'] ?? []);
     }
 
-    /**
-     * @param  array<int, array<string, mixed>>  $users
-     */
     private function importUsers(array $users): void
     {
         if ($users === []) {
@@ -114,45 +111,30 @@ class CatalogImportSeeder extends Seeder
                 continue;
             }
 
-            $row = [
-                'name' => $user['name'] ?? 'User',
-                'last_name' => $user['last_name'] ?? null,
-                'phone' => $user['phone'] ?? null,
-                'address' => $user['address'] ?? null,
-                'avatar' => $user['avatar'] ?? null,
-                'role' => $user['role'] ?? 'user',
-                'updated_at' => $now,
-            ];
-
             $existing = DB::table('users')->where('email', $email)->first();
 
             DB::table('users')->updateOrInsert(
                 ['email' => $email],
-                array_merge($row, [
+                [
+                    'name' => $user['name'] ?? 'User',
+                    'last_name' => $user['last_name'] ?? null,
+                    'phone' => $user['phone'] ?? null,
+                    'address' => $user['address'] ?? null,
+                    'avatar' => $user['avatar'] ?? null,
+                    'role' => $user['role'] ?? 'user',
                     'password' => $password,
                     'created_at' => $existing->created_at ?? $now,
                     'updated_at' => $now,
-                ])
+                ]
             );
         }
-
-        $this->command?->info('Imported '.count($users).' users.');
     }
 
-    /**
-     * @param  array<int, array<string, mixed>>  $reviews
-     */
     private function importReviews(array $reviews): void
     {
-        if ($reviews === []) {
-            return;
-        }
-
-        $imported = 0;
-
         foreach ($reviews as $review) {
-            $productId = Product::query()->where('slug', $review['product_slug'] ?? '')->value('id');
-            $userId = DB::table('users')->where('email', $review['user_email'] ?? '')->value('id');
+            $productId = $this->productId($review['product_slug'] ?? null);
+            $userId = $this->userId($review['user_email'] ?? null);
 
             if (! $productId || ! $userId) {
                 continue;
@@ -168,16 +150,9 @@ class CatalogImportSeeder extends Seeder
                     'comment' => $review['comment'] ?? '',
                 ]
             );
-            $imported++;
         }
-
-        $this->command?->info("Imported {$imported} reviews.");
     }
 
-    /**
-     * @param  array<int, array<string, mixed>>  $orders
-     * @param  array<int, array<string, mixed>>  $items
-     */
     private function importOrders(array $orders, array $items): void
     {
         if ($orders === []) {
@@ -187,7 +162,7 @@ class CatalogImportSeeder extends Seeder
         $orderMap = [];
 
         foreach ($orders as $order) {
-            $userId = DB::table('users')->where('email', $order['user_email'] ?? '')->value('id');
+            $userId = $this->userId($order['user_email'] ?? null);
             if (! $userId) {
                 continue;
             }
@@ -223,11 +198,9 @@ class CatalogImportSeeder extends Seeder
             }
         }
 
-        $importedItems = 0;
-
         foreach ($items as $item) {
             $orderId = $orderMap[(int) ($item['order_legacy_id'] ?? 0)] ?? null;
-            $productId = Product::query()->where('slug', $item['product_slug'] ?? '')->value('id');
+            $productId = $this->productId($item['product_slug'] ?? null);
 
             if (! $orderId || ! $productId) {
                 continue;
@@ -243,26 +216,14 @@ class CatalogImportSeeder extends Seeder
                     'price' => $item['price'] ?? 0,
                 ]
             );
-            $importedItems++;
         }
-
-        $this->command?->info('Imported '.count($orders).' orders and '.$importedItems.' order items.');
     }
 
-    /**
-     * @param  array<int, array<string, mixed>>  $messages
-     */
     private function importMessages(array $messages): void
     {
-        if ($messages === []) {
-            return;
-        }
-
-        $imported = 0;
-
         foreach ($messages as $message) {
-            $senderId = DB::table('users')->where('email', $message['sender_email'] ?? '')->value('id');
-            $receiverId = DB::table('users')->where('email', $message['receiver_email'] ?? '')->value('id');
+            $senderId = $this->userId($message['sender_email'] ?? null);
+            $receiverId = $this->userId($message['receiver_email'] ?? null);
 
             if (! $senderId || ! $receiverId) {
                 continue;
@@ -282,26 +243,14 @@ class CatalogImportSeeder extends Seeder
                     'updated_at' => $message['updated_at'] ?? $createdAt,
                 ]
             );
-            $imported++;
         }
-
-        $this->command?->info("Imported {$imported} chat messages.");
     }
 
-    /**
-     * @param  array<int, array<string, mixed>>  $wishlists
-     */
     private function importWishlists(array $wishlists): void
     {
-        if ($wishlists === []) {
-            return;
-        }
-
-        $imported = 0;
-
         foreach ($wishlists as $wishlist) {
-            $userId = DB::table('users')->where('email', $wishlist['user_email'] ?? '')->value('id');
-            $productId = Product::query()->where('slug', $wishlist['product_slug'] ?? '')->value('id');
+            $userId = $this->userId($wishlist['user_email'] ?? null);
+            $productId = $this->productId($wishlist['product_slug'] ?? null);
 
             if (! $userId || ! $productId) {
                 continue;
@@ -313,9 +262,28 @@ class CatalogImportSeeder extends Seeder
                     'product_id' => $productId,
                 ]
             );
-            $imported++;
+        }
+    }
+
+    private function userId(?string $email): ?int
+    {
+        if (! $email) {
+            return null;
         }
 
-        $this->command?->info("Imported {$imported} wishlist items.");
+        $id = DB::table('users')->where('email', $email)->value('id');
+
+        return $id !== null ? (int) $id : null;
+    }
+
+    private function productId(?string $slug): ?int
+    {
+        if (! $slug) {
+            return null;
+        }
+
+        $id = Product::query()->where('slug', $slug)->value('id');
+
+        return $id !== null ? (int) $id : null;
     }
 }

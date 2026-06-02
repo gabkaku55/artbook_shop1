@@ -23,7 +23,6 @@ body::before {
     z-index: -1;
 }
 
-/* Home hero → sections: no wave seam or clip gap (dark + light) */
 .home-hero-video-wrap {
     clip-path: none;
 }
@@ -32,7 +31,6 @@ body::before {
     display: none;
 }
 
-/* Home: no hairline / gap between hero video and product blocks */
 .home-shared-sections {
     margin-top: -1px;
 }
@@ -52,13 +50,10 @@ body::before {
     padding-bottom: 6rem;
 }
 
-/* Стилі .auth-bg для login/register задані в layouts/app.blade.php з asset() */
-
 @import './auth.css';
 @import './theme-toggle.css';
 @import './theme-light.css';
 
-/* Home product cards: equal height + dark glass */
 .home-product-card {
     display: flex;
     flex-direction: column;
@@ -103,7 +98,6 @@ body::before {
     align-items: flex-end;
 }
 
-/* Home: unboxing videos horizontal rail */
 .home-unboxing-scroll {
     -webkit-overflow-scrolling: touch;
     scrollbar-width: thin;
@@ -121,14 +115,4 @@ body::before {
 
 .home-unboxing-scroll::-webkit-scrollbar-track {
     background: transparent;
-}
-
-.home-faq-card {
-    background: linear-gradient(
-        135deg,
-        rgba(30, 27, 75, 0.55) 0%,
-        rgba(17, 24, 39, 0.92) 55%,
-        rgba(79, 70, 229, 0.12) 100%
-    ) !important;
-    border-color: rgba(99, 102, 241, 0.28) !important;
 }

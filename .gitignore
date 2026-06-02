@@ -21,6 +21,8 @@
 /storage/pail
 /storage/app/temp-export
 /database/media/video/_originals
+/tmp-*.txt
+/tmp-*.html
 /vendor
 Homestead.json
 Homestead.yaml

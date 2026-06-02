@@ -18,7 +18,6 @@ if [ -f artisan ]; then
   php artisan catalog:sync-media || true
 
   if [ "${SEED_ON_START:-true}" != "false" ] && [ -f database/data/catalog.json ]; then
-    echo "Importing site data from catalog.json..."
     php artisan db:seed --class=CatalogImportSeeder --force
   fi
 fi

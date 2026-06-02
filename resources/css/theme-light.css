@@ -1,14 +1,11 @@
-/* Light theme only — [data-theme="light"]. Dark theme unchanged. */
-
+﻿
 [data-theme='light'] {
-    /* Exact palette */
     --lt-cream: #fffdf6;
     --lt-lilac: #f1e7ed;
     --lt-text-secondary-ui: #949ab1;
     --lt-ui: #7c7e9d;
     --lt-text-primary: #4c5372;
 
-    /* Semantic aliases */
     --lt-bg-page: var(--lt-cream);
     --lt-bg-section: var(--lt-lilac);
     --lt-bg-muted: var(--lt-lilac);
@@ -32,7 +29,6 @@
 
     --lt-body-scrim: color-mix(in srgb, var(--lt-cream) 92%, transparent);
     --lt-shared-scrim: color-mix(in srgb, var(--lt-cream) 55%, transparent);
-    /* Home sections: svit.jpg + footer-like violet/lilac wash (not product photos) */
     --lt-home-section-scrim: linear-gradient(
         165deg,
         color-mix(in srgb, var(--lt-ui) 52%, transparent) 0%,
@@ -58,11 +54,9 @@
     --lt-ease: cubic-bezier(0.4, 0, 0.2, 1);
     --lt-duration: 0.18s;
 
-    /* Hero video (light): match dark theme visual weight — same opacity layering */
     --lt-hero-video-opacity: 0.5;
     --lt-hero-overlay-opacity: 0.8;
 
-    /* Checkout / panels */
     --lt-soft-pink: #fdf2f7;
     --lt-soft-pink-input: #fef8fa;
     --lt-chat-bar-tint: color-mix(in srgb, #949ab1 78%, #ffffff);
@@ -70,7 +64,6 @@
     --lt-pale-purple-panel: #f0ebf8;
     --lt-delivery-card-pink: #fcf7fb;
 
-    /* Admin panel (light) */
     --lt-admin-sidebar-head: #f5f0fa;
     --lt-admin-msg-user-bg: #f0ebf8;
     --lt-admin-msg-input-wrap: #7c7e9d;
@@ -229,7 +222,6 @@
     color: #ffffff !important;
 }
 
-/* Surfaces: cream + lilac only (no gray) */
 [data-theme='light'] .bg-gray-950 {
     background-color: var(--lt-bg-page) !important;
 }
@@ -247,7 +239,6 @@
     border-color: var(--lt-border-soft) !important;
 }
 
-/* Typography */
 [data-theme='light'] .text-white {
     color: var(--lt-text) !important;
 }
@@ -319,7 +310,6 @@
     fill: var(--lt-bg-page) !important;
 }
 
-/* Hero video: same layered weight as dark (opacity-50 video + strong gradient scrim) */
 [data-theme='light'] #hero-bg-video {
     opacity: var(--lt-hero-video-opacity);
     filter: none !important;
@@ -358,7 +348,6 @@
     color: var(--lt-ui) !important;
 }
 
-/* Primary / accent fills → palette UI color */
 [data-theme='light'] .bg-indigo-600,
 [data-theme='light'] .bg-indigo-700,
 [data-theme='light'] a.bg-indigo-600,
@@ -531,7 +520,6 @@
     border-color: var(--lt-border-soft) !important;
 }
 
-/* --- Auth (світла тема): єдиний фон для login/register/reset --- */
 [data-theme='light'] body.auth-bg {
     background: url('/images/fonristret.jpg') center center / cover no-repeat fixed !important;
 }
@@ -540,7 +528,6 @@
     background: rgba(255, 253, 246, 0.7);
 }
 
-/* --- Головна: герой, хвиля, секції --- */
 [data-theme='light'] .home-hero h1.text-white {
     color: #000000 !important;
 }
@@ -579,7 +566,6 @@
     background-repeat: no-repeat !important;
     background-position: center center !important;
     background-size: cover !important;
-    /* не fixed — інакше «вікно» у фото йде від viewport і не збігається з центром блоку секцій */
     background-attachment: scroll !important;
 }
 
@@ -670,7 +656,6 @@
     color: #7c7e9d !important;
 }
 
-[data-theme='light'] .home-shared-sections .home-faq-card,
 [data-theme='light'] .home-shared-sections .space-y-4 > div.bg-gray-800 {
     background: linear-gradient(
         135deg,
@@ -698,7 +683,6 @@
     background-color: rgba(248, 250, 252, 0.95) !important;
 }
 
-/* --- Кошик: підказка для гостя --- */
 [data-theme='light'] .cart-guest-auth-prompt {
     background-color: color-mix(in srgb, var(--lt-lilac) 72%, var(--lt-cream)) !important;
     border-color: var(--lt-border-soft) !important;
@@ -708,7 +692,6 @@
     color: #4c5372 !important;
 }
 
-/* --- Про нас --- */
 [data-theme='light'] .page-about h1 .text-indigo-500 {
     color: #6366f1 !important;
 }
@@ -775,7 +758,6 @@
     color: #ffffff !important;
 }
 
-/* --- Оплата та доставка --- */
 [data-theme='light'] .page-delivery .delivery-method-card {
     background-color: var(--lt-delivery-card-pink) !important;
     border-color: rgba(124, 126, 157, 0.3) !important;
@@ -828,7 +810,6 @@
     color: #7c7e9d !important;
 }
 
-/* --- Контакти --- */
 [data-theme='light'] .page-contacts .contact-card-soft,
 [data-theme='light'] .page-contacts .contact-card-soft-light {
     background-color: #fff8fa !important;
@@ -907,7 +888,6 @@
     color: #e2e8f0 !important;
 }
 
-/* --- Оформлення замовлення --- */
 [data-theme='light'] .page-checkout .bg-gray-900 input.bg-gray-800,
 [data-theme='light'] .page-checkout label.flex.items-center.bg-gray-800 {
     background-color: var(--lt-soft-pink-input) !important;
@@ -943,7 +923,6 @@
     color: #7c7e9d !important;
 }
 
-/* --- Чат з підтримкою --- */
 [data-theme='light'] .page-chat .border-b.border-gray-800.bg-gray-800\/30,
 [data-theme='light'] .page-chat .border-t.border-gray-800.bg-gray-800\/20 {
     background-color: var(--lt-chat-bar-tint) !important;
@@ -975,7 +954,6 @@
     color: rgba(255, 253, 246, 0.75) !important;
 }
 
-/* --- Профіль: історія замовлень --- */
 [data-theme='light'] .page-profile table thead.bg-gray-800\/50 {
     background-color: var(--lt-bg-raised) !important;
 }
@@ -999,7 +977,6 @@
     color: inherit !important;
 }
 
-/* --- Сторінка товару: наявність --- */
 [data-theme='light'] .page-product .product-stock-banner--in-stock {
     background: rgba(236, 253, 245, 0.92) !important;
     border: 1px solid rgba(74, 155, 128, 0.42) !important;
@@ -1040,7 +1017,6 @@
     background: #f3eef9 !important;
 }
 
-/* Auth (login/register/reset): light overrides live with the rest of the light palette */
 [data-theme='light'] .auth-bg {
     background: url('/images/fonristret.jpg') center center / cover no-repeat fixed !important;
 }
@@ -1057,17 +1033,13 @@
     color: #4c5372 !important;
 }
 
-/* --- Admin panel (світла тема): лише кольори --- */
-/* html[data-theme-key="artbook-admin-theme"] задається в layouts/app.blade.php */
 
-/* Блок «Панель керування» у бічному меню */
 [data-theme='light'][data-theme-key='artbook-admin-theme'] aside .rounded-3xl > .p-8.border-b[class*='bg-gray-800'] {
     background-color: var(--lt-admin-sidebar-head) !important;
     border-color: rgba(124, 126, 157, 0.22) !important;
     color: #4c5372 !important;
 }
 
-/* Таблиці: рядок назв стовпців */
 [data-theme='light'][data-theme-key='artbook-admin-theme'] thead[class*='bg-gray-800/50'] {
     background-color: #4c5372 !important;
 }
@@ -1077,7 +1049,6 @@
     color: #ffffff !important;
 }
 
-/* Повідомлення: бульбашки користувача */
 [data-theme='light'][data-theme-key='artbook-admin-theme'] #admin-messages-container .rounded-r-3xl.rounded-tl-3xl.bg-gray-800,
 [data-theme='light'][data-theme-key='artbook-admin-theme'] #admin-messages-container [class*='rounded-tl-3xl'][class*='bg-gray-800'] {
     background-color: var(--lt-admin-msg-user-bg) !important;
@@ -1095,7 +1066,6 @@
     color: rgba(76, 83, 114, 0.55) !important;
 }
 
-/* Повідомлення: обгортка поля вводу (#7C7E9D) + світліший input */
 [data-theme='light'][data-theme-key='artbook-admin-theme'] #admin-messages-container + .p-8[class*='bg-gray-800'] {
     background-color: var(--lt-admin-msg-input-wrap) !important;
     border-color: rgba(76, 83, 114, 0.35) !important;
@@ -1119,7 +1089,6 @@
         0 0 0 3px rgba(255, 253, 246, 0.45);
 }
 
-/* Профіль: 2FA — блок статусу (Вимкнено / Увімкнено): #4C5372, світлий текст */
 [data-theme='light'][data-theme-key='artbook-admin-theme'] .flex.items-center.justify-between.p-6[class*='bg-gray-800'] {
     background-color: #4c5372 !important;
     border-color: rgba(255, 253, 246, 0.22) !important;
@@ -1130,7 +1099,6 @@
     color: #fffdf6 !important;
 }
 
-/* «Увімкнути» — зелений акцент як у темній темі */
 [data-theme='light'][data-theme-key='artbook-admin-theme'] .flex.items-center.justify-between.p-6[class*='bg-gray-800'] form button[class*='bg-green-900'] {
     background-color: rgba(20, 83, 45, 0.35) !important;
     color: #22c55e !important;
@@ -1144,7 +1112,6 @@
     border-color: rgba(34, 197, 94, 0.5) !important;
 }
 
-/* «Вимкнути» — червоний акцент як у темній темі */
 [data-theme='light'][data-theme-key='artbook-admin-theme'] .flex.items-center.justify-between.p-6[class*='bg-gray-800'] form button[class*='bg-red-900'] {
     background-color: rgba(127, 29, 29, 0.35) !important;
     color: #ef4444 !important;
