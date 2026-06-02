@@ -698,6 +698,16 @@
     background-color: rgba(248, 250, 252, 0.95) !important;
 }
 
+/* --- Кошик: підказка для гостя --- */
+[data-theme='light'] .cart-guest-auth-prompt {
+    background-color: color-mix(in srgb, var(--lt-lilac) 72%, var(--lt-cream)) !important;
+    border-color: var(--lt-border-soft) !important;
+}
+
+[data-theme='light'] .cart-guest-auth-prompt__label {
+    color: #4c5372 !important;
+}
+
 /* --- Про нас --- */
 [data-theme='light'] .page-about h1 .text-indigo-500 {
     color: #6366f1 !important;

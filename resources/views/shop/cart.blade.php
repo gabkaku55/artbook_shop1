@@ -95,8 +95,8 @@
                         @auth
                             <a href="{{ route('checkout') }}" class="block w-full bg-indigo-600 text-white text-center py-5 rounded-2xl font-black text-xl hover:bg-indigo-700 transition transform hover:scale-[1.02] shadow-xl shadow-indigo-500/20">@if(app()->getLocale() == 'uk') Оформити замовлення @elseif(app()->getLocale() == 'en') Checkout @else Kasse @endif</a>
                         @else
-                            <div class="text-center bg-gray-800/50 p-6 rounded-2xl border border-gray-700">
-                                <p class="text-sm text-gray-500 mb-6 font-bold uppercase tracking-widest">@if(app()->getLocale() == 'uk') Авторизуйтесь для покупки @elseif(app()->getLocale() == 'en') Authorize to purchase @else Zum Kaufen autorisieren @endif</p>
+                            <div class="cart-guest-auth-prompt text-center bg-gray-800/50 p-6 rounded-2xl border border-gray-700">
+                                <p class="cart-guest-auth-prompt__label text-sm text-gray-500 mb-6 font-bold uppercase tracking-widest">@if(app()->getLocale() == 'uk') Авторизуйтесь для покупки @elseif(app()->getLocale() == 'en') Authorize to purchase @else Zum Kaufen autorisieren @endif</p>
                                 <a href="{{ route('login') }}" class="block w-full bg-white text-gray-950 py-4 rounded-xl font-black text-lg hover:bg-gray-200 transition">{{ __('messages.login') }}</a>
                             </div>
                         @endauth
